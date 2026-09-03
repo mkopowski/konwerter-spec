@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator ciągów</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-title">Spis Treści</div>
+        <ul class="nav-links">
+            <li><a href="#linki-do-producentow">Linki do producentów</a></li>
+            <li class="mt-2"><a href="#klasy-ip-ik">Klasy IP, IK</a></li>
+            <li class="mt-2"><a href="#cechy-hik">Ikony cech Hikvision</a></li>
+            <li class="mt-2"><a href="#cechy-hik">Bąbelki cech Hikvision</a></li>
+        </ul>
+        <a href="wytyczne-do-opisow.zip" class="p-2 bg-success text-white rounded text-center img-zoom-1 text-decoration-none" download="">Pobierz pliki lokalnie</a>
+    </nav>
+
+    <main class="main-content">
+        <!------------------------------------------------------------------------------------------------------------->
+        <!----- GENERATOR CIĄGÓW W SPEC ------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------------->
+        <div class="row mx-auto col-12 p-3 border my-3 bg-white justify-content-start" id="ciagi">
+            <div class="col-12 mx-auto text-center mb-5">
+                <h2><strong>Generator ciągów</strong></h2>
+                <p class="my-1 text-gray">Tworzy kopiowalny ciąg funkcji wybranych checkboxem. Zachowuje kolejnośc góra &rarr; dół.</p>
+            </div>
+            <div class="lista-ciagow col-sm-4">
+                <h5 class="mb-2"><strong>Funkcje ogólne:</strong></h5>
+                <p><label><input type="checkbox" class="mr-2" value="Anti-banding"><span>Anti-banding</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="heartbeat"><span>heartbeat</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="odbicie lustrzane"><span>odbicie lustrzane</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="resetowanie hasła przez e-mail"><span>resetowanie hasła przez e-mail</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="ochrona hasła"><span>ochrona hasła</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="rejestr zdarzeń"><span>rejestr zdarzeń</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="licznik pikseli"><span>licznik pikseli</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="znak wodny"><span>znak wodny</span></label></p>
+            </div>
+
+            <div class="lista-ciagow col-sm-4">
+                <h5 class="mb-2"><strong>Metody powiadomień:</strong></h5>
+                <p><label><input type="checkbox" class="mr-2" value="Przesyłanie na NAS / kartę pamięci / FTP"><span>Przesyłanie na NAS / kartę pamięci / FTP</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="wyślij e-mail"><span>wyślij e-mail</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="powiadom centrum nadzoru"><span>powiadom centrum nadzoru</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="rozpocznij nagrywanie"><span>rozpocznij nagrywanie</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="rozpocznij przechwytywanie"><span>rozpocznij przechwytywanie</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="uruchom wyjście alarmowe"><span>uruchom wyjście alarmowe</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="ostrzeżenie dźwiękowe"><span>ostrzeżenie dźwiękowe</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="miganie białym światłem"><span>miganie białym światłem</span></label></p>
+                <p><label><input type="checkbox" class="mr-2" value="działania PTZ (takie jak ustawienia wstępne, skanowanie patrolu, skanowanie wzorca)"><span>działania PTZ (takie jak ustawienia wstępne, skanowanie patrolu, skanowanie wzorca)</span></label></p>
+            </div>
+
+            <div class="row col-12 mx-auto text-center justify-content-center flex-column mt-4">
+                <div class="col-12 row mx-auto">
+                    <!--                <button id="generateBtn" class="genBtn my-1">Generuj ciąg</button>-->
+                    <div class="rodzic col-12 mx-auto text-center justify-content-center">
+                        <p class="tekst mx-auto col-sm-12 mt-3" style="width:fit-content;" id="result"><span class="text-gray">Tu pojawią się zaznaczone elementy</span></p>
+                        <button class="btn-kopiuj bg-primary text-white px-3 py-2 mx-auto mt-1" id="copyBtn"><i class="far fa-copy"></i>&nbsp; Kopiuj</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS -->
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
