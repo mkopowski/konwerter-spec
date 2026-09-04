@@ -1,128 +1,212 @@
-html {
-    margin: 0;
-    padding: 0;
-}
+        :root {
+            --bg-body: #909090;
+            --bg-sidebar: #ffffff;
+            --bg-card: #ffffff;
 
-body {
-    padding: 0;
-    background: #ddd !important;
-    font-family: "Google Sans", sans-serif !important;
-    font-size: 12pt !important;
-    margin: 0px auto;
-    max-width: 1920px;
-}
+            --text-main: #1c242f;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
 
-h2 {
-    font-size: 2rem;
-}
+            --info-bg: #fff6d2;
+            --info-border: #e0b500;
 
-.rounded-050 {
-    border-radius: 0.5em;
-}
+            --success-bg: #ebffe5;
+            --success-border: #40b31b;
 
-.rounded-150 {border-radius:1.5em}
+            --dark-green: #163f09;
 
-.sidebar {
-    width: 250px;
-    background-color: #FFF;
-    border-right: 1px solid #333;
-    position: fixed;
-    height: 100vh;
-    padding: 16px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 100;
-}
+            --warn-bg: #ffdada;
+            --warn-border: #a60000;
 
+            --neutral-bg: #e6e6e6;
 
-.main-content {
-    margin-left: 250px;
-    padding: 0;
-    width: calc(1900px - 250px);
-    display: flex;
-    flex-direction: column;
-}
+            --dark-red: #450c12;
 
-.code-box {
-    background: #0a0a0a;
-    padding: 12px 6px
-}
+            --preview-bg: #f9fafb;
+            --code-bg: #1e1e1e;
+            --code-text: #414141;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --success: #40b31b;
+            --wrong: #db0015;
+            --sidebar-width: 260px;
+            --radius: 4px;
+        }
 
-.code-box pre {
-    color: #fff;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        p {
+            margin-bottom: 0;
+        }
 
-.btn-kopiuj {
-    background: #FFF;
-    border: 1px solid #0095ff;
-    border-radius: 6px;
-    padding: 6px 8px;
-    color: #0095ff;
-    margin: 3px;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
 
-.btn-kopiuj:hover {
-    background: #0095ff;
-    color: #FFF;
-}
-
-.btn-kopiuj:active {
-    background: #00518a;
-}
-
-.module-box {
-    padding: 24px;
-    margin:0 0 24px 0;
-    border-top: 2px solid #999;
-    border-bottom: 2px solid #999;
-    background: #f8f8f8;
-}
+        /* --- NAVIGATION SIDEBAR (PANEL BOCZNY) --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            height: 100vh;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
 
 
-#linki-do-producentow {
-    justify-content: center;
-    text-align: center;
-}
+        .nav-links li a {
+            display: block;
+            padding: 6px 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
 
-#linki-do-producentow > div.kopia-kontener {
-    margin: 0 12px 0;
-    display: inline-block;
-}
+        .nav-links li a:hover {
+            background-color: var(--accent);
+            color: var(--bg-sidebar);
+        }
 
-#cechy-hik .kopia-kontener {
-    background: #FFF;
-    border: 1px solid #ddd;
-    margin: 4px;
-    width:90px;
-    height:130px;
-    overflow:hidden;
-}
+        .nav-links li > ul > li > a {
+            font-size: 0.9em
+        }
 
-#cechy-hik .kopia-kontener:hover{cursor:pointer;transform: scale(1.01);background:#f4f4f4}
+        /* --- GŁÓWNY KONTENER TREŚCI --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 1px 12px;
+            width: calc(1900px - var(--sidebar-width));
+            display: flex;
+            flex-direction: column;
+        }
 
-#cechy-hik .cechy-serii .kopia-kontener {display:flex;flex-direction: column;height:80px;}
 
-#bubbles {
-    background: #071e39;
-    padding: 24px;
-    justify-content: center;
-}
+        /* 3. CODE BLOCK */
+        .code-box {
+            background-color: var(--code-bg);
+            border-radius: var(--radius);
+            overflow: scroll;
+            display: flex;
+            flex-direction: column;
+            max-height: 420px;
+        }
 
-#bubbles .kopia-kontener {
-    display: inline;
-    max-width:400px;
-}
+        /* SIATKA: DWIE KOLUMNY KODU OBOK SIEBIE */
+        .code-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
 
-/* Kontrujemy klasy col-* Bootstrapa dla elementu li w cheatsheecie */
-#bubbles .kopia-kontener > li {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-    width: 100% !important;
-}
+        /* Responsywność dla wariantu z dwoma kodami */
+        @media (max-width: 1024px) {
+            .code-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.spec-textarea{width:480px;height:200px;display: block;margin:0 auto;}
+        .code-header {
+            background-color: #2d2d2d;
+            padding: 8px 16px;
+            border-bottom: 1px solid #404040;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.pole-pytanie{padding:12px 0;}
+        .code-header span {
+            color: #a3a3a3;
+            font-size: 0.75rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .btn-copy {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-hover);
+        }
+
+        pre {
+            margin: 0;
+            padding: 16px;
+            overflow-x: auto;
+            flex-grow: 1;
+            color: #ddd;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--code-text);
+            white-space: pre;
+            line-height: 1.4;
+        }
+
+        .btn-kopiuj {
+            background: #FFF;
+            border: 1px solid #0095ff;
+            border-radius: 6px;
+            padding: 6px 8px;
+            color: #0095ff;
+            margin: 3px;
+        }
+
+        .btn-kopiuj:hover {
+            background: #0095ff;
+            color: #FFF;
+        }
+
+        .btn-kopiuj:active {
+            background: #00518a;
+        }
+
+
+        /* --- RESPONSYWNOŚĆ --- */
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 12px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 12px;
+            }
+        }
