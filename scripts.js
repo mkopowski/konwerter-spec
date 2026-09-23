@@ -9,10 +9,8 @@ document.getElementById('convertBtn').addEventListener('click', function () {
         return;
     }
 
-
     const temp = document.createElement('div');
     temp.innerHTML = input;
-
 
     let wrapper = temp.querySelector('div.table-responsive');
     let table = wrapper ? wrapper.querySelector('table.table') : temp.querySelector('table.table');
@@ -21,12 +19,15 @@ document.getElementById('convertBtn').addEventListener('click', function () {
         return;
     }
 
+    // USUWANIE scope="row" z nagłówków
+    table.querySelectorAll('th[scope="row"]').forEach(th => {
+        th.removeAttribute('scope');
+    });
 
     const sections = [];
     let currentSection = null;
 
-
-[...table.querySelectorAll('thead, tbody')].forEach(section => {
+    [...table.querySelectorAll('thead, tbody')].forEach(section => {
         if (section.tagName === 'THEAD') {
             const tr = section.querySelector('tr');
             if (!tr) return;
@@ -40,11 +41,9 @@ document.getElementById('convertBtn').addEventListener('click', function () {
         }
     });
 
-
     sections.forEach(sec => {
         if (sec.length > 1) sec[sec.length - 1].classList.add('last');
     });
-
 
     // Zachowaj wcięcia z oryginalnego HTML
     const originalLines = input.split('\n');
@@ -58,7 +57,6 @@ document.getElementById('convertBtn').addEventListener('click', function () {
         }
     });
 
-
     table.innerHTML = '';
     sections.forEach(sec => {
         sec.forEach(tr => {
@@ -70,11 +68,9 @@ document.getElementById('convertBtn').addEventListener('click', function () {
         });
     });
 
-
     const resultHTML = wrapper ? wrapper.outerHTML : table.outerHTML;
     document.getElementById('output').value = resultHTML;
 });
-
 
 document.getElementById('copySpec').addEventListener('click', function () {
     const output = document.getElementById('output');
